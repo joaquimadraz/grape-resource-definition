@@ -8,11 +8,11 @@ module Grape
         Grape::ResourceDefinition.definitions[model_name]
       end
 
-      def resource_design(name, &params_block)     
+      def resource_define(name, &params_block)     
         definitions[name] = params_block
       end
 
-      def design(name)
+      def define(name)
         if definitions.nil?
           raise "No ResourceDefinition defined for #{self}"
         end
@@ -50,9 +50,9 @@ end
 module Grape
   class API
 
-    def self.resource_definition(resource_design_module)
+    def self.resource_definition(resource_definition_module)
       self.class_eval do
-        extend resource_design_module
+        extend resource_definition_module
       end
     end
   
