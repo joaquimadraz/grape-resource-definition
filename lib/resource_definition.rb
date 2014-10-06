@@ -1,0 +1,1 @@
+require "resource_definition/version"
