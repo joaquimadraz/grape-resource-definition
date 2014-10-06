@@ -1,7 +1,7 @@
 # encoding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'resource_definition/version'
+require 'grape_resource_definition/version'
 
 Gem::Specification.new do |gem|
   gem.name          = "grape_resource_definition"
