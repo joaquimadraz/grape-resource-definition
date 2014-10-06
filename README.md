@@ -1,4 +1,5 @@
-grape-resource-definition
+Grape::ResourceDefinition
 =========================
 
-Grape Resource Definition Gem
+This gem add the possibility to define the params validation & coercion outside the route scope.
+More documentation later.
