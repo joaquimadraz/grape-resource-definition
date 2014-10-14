@@ -1,0 +1,3 @@
+class NoResourceDefined < StandardError
+
+end

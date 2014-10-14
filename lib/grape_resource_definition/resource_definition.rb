@@ -5,20 +5,20 @@ module Grape
 
       def definitions
         model_name = Grape::ResourceDefinition.get_class_name(self)
-        Grape::ResourceDefinition.definitions[model_name]
+        Grape::ResourceDefinition.defined_resources[model_name]
       end
 
-      def resource_define(name, &params_block)     
+      def resource_define(name, &params_block)
         definitions[name] = params_block
       end
 
       def define(name)
         if definitions.nil?
-          raise "No ResourceDefinition defined for #{self}"
+          raise NoResourceDefinition, "No resource definition for #{self}"
         end
-        
+
         if definitions[name].nil?
-          raise "Design ':#{name}' if not defined for #{self}"
+          raise NoResourceDefined, "':#{name}' is not defined for #{self}"
         end
 
         self.instance_eval &definitions[name]
@@ -26,22 +26,22 @@ module Grape
 
     end
 
-    def self.definitions
-      @definitions
+    def self.defined_resources
+      @defined_resources
     end
-        
+
     def self.included(other)
       model_name = get_class_name(other)
 
-      @definitions ||= {}
-      @definitions[model_name] = {}
+      @defined_resources ||= {}
+      @defined_resources[model_name] = {}
 
       other.include ClassMethods
       other.extend  ClassMethods
     end
 
     def self.get_class_name(klass)
-      klass.name.split("::")[-1].to_sym  
+      klass.name.split("::")[-1].to_sym
     end
 
   end
@@ -55,6 +55,6 @@ module Grape
         extend resource_definition_module
       end
     end
-  
+
   end
 end

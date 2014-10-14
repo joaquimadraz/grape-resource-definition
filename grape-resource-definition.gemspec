@@ -20,8 +20,7 @@ Gem::Specification.new do |gem|
 
   gem.add_runtime_dependency 'grape', ['= 0.9.0']
 
-  gem.add_development_dependency 'rspec'
-  gem.add_development_dependency 'rspec-core', '2.14.8'
-  gem.add_development_dependency 'rake'
-  gem.add_development_dependency 'pry'
+  gem.add_development_dependency 'rspec', '~> 0'
+  gem.add_development_dependency 'rake', '~> 0'
+  gem.add_development_dependency 'pry', '~> 0'
 end
