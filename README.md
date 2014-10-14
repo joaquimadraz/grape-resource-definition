@@ -7,24 +7,26 @@ Based on Praxis principle, that design and implementation should be separated, I
 
 If you are using Grape to create a Blog API (of course), you should have something like this:
 
-    class Posts < Grape::API
-    
-      desc 'Get all blog posts',
-        http_codes: [
-          [200, 'Ok']
-        ]
+```ruby
+class Posts < Grape::API
 
-      params do
-        optional :q, type: Hash
-        optional :order_by, type: String
-        optional :order_dir, type: String
-      end
-      
-      get '/posts' do
-        # Logic to get those posts
-      end
-      
-    end
+  desc 'Get all blog posts',
+    http_codes: [
+      [200, 'Ok']
+    ]
+
+  params do
+    optional :q, type: Hash
+    optional :order_by, type: String
+    optional :order_dir, type: String
+  end
+  
+  get '/posts' do
+    # Logic to get those posts
+  end
+  
+end
+```
 
 If your Posts API have only this route, to get all posts, it's ok. But if you have all actions to CRUD your posts, and some more to handle your specific business logic, this will become a mess... for sure.
 
@@ -59,16 +61,18 @@ So.. with this gem you can define your resource definition outside your route an
     
 ...and your route links to that resource:
 
-    class Posts < Grape::API
-    
-      resource_definition Resources::Posts
-    
-      define :index
-      get '/posts' do
-        # Logic to get those posts
-      end
-      
-    end
+```ruby
+class Posts < Grape::API
+
+  resource_definition Resources::Posts
+
+  define :index
+  get '/posts' do
+    # Logic to get those posts
+  end
+  
+end
+```
 
 I've made this really simple, the rest it's up to you. I don't want to add constraints on that. 
 
