@@ -68,7 +68,7 @@ So.. with this gem you can define your resource definition outside your route an
       
     end
 
-I've made this really simple, the rest its up to you. I don't want to add constraint on that. 
+I've made this really simple, the rest it's up to you. I don't want to add constraints on that. 
 
 ## Installation
 
