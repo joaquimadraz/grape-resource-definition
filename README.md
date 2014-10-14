@@ -24,7 +24,9 @@ If you are using Grape to create a Blog API (of course), you should have somethi
       
     end
 
-If your Posts API have only this route, to get all posts, it's ok. But if you manage to have all actions to CRUD your posts, and some more to handle your specific business logic, this will become a mess... for sure.
+If your Posts API have only this route, to get all posts, it's ok. But if you have all actions to CRUD your posts, and some more to handle your specific business logic, this will become a mess... for sure.
+
+This was a problem for me. I like my code to be as readable as possible and, with all these documentation and params definition that we need to create ou API, this is not possible.
 
 ## Installation
 
