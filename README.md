@@ -55,7 +55,7 @@ So.. with this gem you can define your resource definition outside your route an
         
     end
     
-...and your route:
+...and your route links to that resource:
 
     class Posts < Grape::API
     
@@ -67,6 +67,8 @@ So.. with this gem you can define your resource definition outside your route an
       end
       
     end
+
+I've made this really simple, the rest its up to you. I don't want to add constraint on that. 
 
 ## Installation
 
