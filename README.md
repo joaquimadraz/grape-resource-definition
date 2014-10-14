@@ -34,30 +34,32 @@ This was a problem for me. I like my code to be as readable as possible and, wit
 
 So.. with this gem you can define your resource definition outside your route and call it when you need it.
 
-    module Resources
-        
-      module Posts
-      
-        include Grape::ResourceDefinition
-        
-        resource_define :index do
-        
-          desc 'Get all blog posts',
-            http_codes: [
-              [200, 'Ok']
-            ]
+```ruby
+module Resources
     
-          params do
-            optional :q, type: Hash
-            optional :order_by, type: String
-            optional :order_dir, type: String
-          end
-        
-        end
-      
+  module Posts
+  
+    include Grape::ResourceDefinition
+    
+    resource_define :index do
+    
+      desc 'Get all blog posts',
+        http_codes: [
+          [200, 'Ok']
+        ]
+
+      params do
+        optional :q, type: Hash
+        optional :order_by, type: String
+        optional :order_dir, type: String
       end
-        
+    
     end
+  
+  end
+    
+end
+```
     
 ...and your route links to that resource:
 
