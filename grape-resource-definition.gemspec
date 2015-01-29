@@ -18,9 +18,9 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ['lib']
 
-  gem.add_runtime_dependency 'grape', ['= 0.9.0']
+  gem.add_runtime_dependency 'grape', ['~> 0.10']
 
-  gem.add_development_dependency 'rspec', '~> 0'
+  gem.add_development_dependency 'rspec', '~> 3.1'
   gem.add_development_dependency 'rake', '~> 0'
   gem.add_development_dependency 'pry', '~> 0'
 end
