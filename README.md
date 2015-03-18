@@ -1,5 +1,7 @@
 Grape::ResourceDefinition
 =========================
+![](https://travis-ci.org/joaquimadraz/grape-resource-definition.svg)
+
 
 (Still making the tests and the rest of the documentation)
 
