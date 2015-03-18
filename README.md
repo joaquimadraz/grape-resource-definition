@@ -2,9 +2,6 @@ Grape::ResourceDefinition
 =========================
 ![](https://travis-ci.org/joaquimadraz/grape-resource-definition.svg)
 
-
-(Still making the tests and the rest of the documentation)
-
 Based on Praxis principle, that design and implementation should be separated, I've created this gem to add the possibility to define the params validation & coercion outside the route's class.
 
 If you are using Grape to create a Blog API (of course), you should have something like this:
