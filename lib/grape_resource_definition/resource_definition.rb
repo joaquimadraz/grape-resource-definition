@@ -41,7 +41,7 @@ module Grape
     end
 
     def self.get_class_name(klass)
-      klass.name.split("::")[-1].to_sym
+      "#{klass.name}".gsub('::Resources', '').to_sym
     end
 
   end
