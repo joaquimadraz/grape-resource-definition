@@ -19,11 +19,11 @@ class Posts < Grape::API
     optional :order_by, type: String
     optional :order_dir, type: String
   end
-  
+
   get '/posts' do
     # Logic to get those posts
   end
-  
+
 end
 ```
 
@@ -35,13 +35,13 @@ So.. with this gem you can define your resource definition outside your route an
 
 ```ruby
 module Resources
-    
+
   module Posts
-  
+
     include Grape::ResourceDefinition
-    
+
     resource_define :index do
-    
+
       desc 'Get all blog posts',
         http_codes: [
           [200, 'Ok']
@@ -52,14 +52,14 @@ module Resources
         optional :order_by, type: String
         optional :order_dir, type: String
       end
-    
+
     end
-  
+
   end
-    
+
 end
 ```
-    
+
 ...and your route links to that resource:
 
 ```ruby
@@ -71,11 +71,11 @@ class Posts < Grape::API
   get '/posts' do
     # Logic to get those posts
   end
-  
+
 end
 ```
 
-I've made this really simple, the rest it's up to you. I don't want to add constraints on that. 
+I've made this really simple, the rest it's up to you. I don't want to add constraints on that.
 
 ## Installation
 
@@ -90,4 +90,6 @@ And then execute:
 Or install it yourself as:
 
     $ gem install grape-resource-definition
+
+
 
