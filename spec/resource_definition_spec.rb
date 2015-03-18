@@ -45,19 +45,15 @@ describe Grape::ResourceDefinition do
       Grape::ResourceDefinition.defined_resources
     end
 
-    it 'should have :Todos resource with :show definition' do
-
+    it 'should have Resources::Todos resource with :show and :index definition' do
       expect(defined_resources).to \
-        have_key(:Todos)
+        have_key('Resources::Todos')
 
-      expect(defined_resources[:Todos]).to \
+      expect(defined_resources['Resources::Todos']).to \
         have_key(:index)
 
-      expect(defined_resources[:Todos]).to \
+      expect(defined_resources['Resources::Todos']).to \
         have_key(:show)
-
-      # expect(subject).to receive(:define).with(:show)
-
     end
 
   end

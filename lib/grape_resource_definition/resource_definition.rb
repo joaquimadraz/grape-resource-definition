@@ -3,16 +3,17 @@ module Grape
 
     module ClassMethods
 
-      def definitions
-        model_name = Grape::ResourceDefinition.get_class_name(self)
-        Grape::ResourceDefinition.defined_resources[model_name]
-      end
-
       def resource_define(name, &params_block)
+        definitions = \
+          Grape::ResourceDefinition.defined_resources["#{self}"]
+
         definitions[name] = params_block
       end
 
       def define(name)
+        definitions = \
+          Grape::ResourceDefinition.defined_resources["#{self::RESOURCE_DEFINITION}"]
+
         if definitions.nil?
           raise NoResourceDefinition, "No resource definition for #{self}"
         end
@@ -31,17 +32,11 @@ module Grape
     end
 
     def self.included(other)
-      model_name = get_class_name(other)
-
       @defined_resources ||= {}
-      @defined_resources[model_name] = {}
+      @defined_resources["#{other}"] = {}
 
       other.include ClassMethods
       other.extend  ClassMethods
-    end
-
-    def self.get_class_name(klass)
-      "#{klass.name}".gsub('::Resources', '').to_sym
     end
 
   end
@@ -51,6 +46,7 @@ module Grape
   class API
 
     def self.resource_definition(resource_definition_module)
+      self.const_set('RESOURCE_DEFINITION', resource_definition_module)
       self.class_eval do
         extend resource_definition_module
       end
