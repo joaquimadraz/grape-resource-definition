@@ -46,7 +46,12 @@ module Grape
   class API
 
     def self.resource_definition(resource_definition_module)
-      self.const_set('RESOURCE_DEFINITION', resource_definition_module)
+      begin
+        self.const_get('RESOURCE_DEFINITION')
+      rescue NameError => e
+        self.const_set('RESOURCE_DEFINITION', resource_definition_module)
+      end
+
       self.class_eval do
         extend resource_definition_module
       end
